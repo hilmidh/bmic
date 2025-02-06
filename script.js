@@ -44,6 +44,9 @@ function createlist(arr) {
 
 
 // console.log(hitungBmi(150, 60));
+function onSubmit() {
+
+}
 
 function submit() {
     console.log('jalan');
@@ -74,48 +77,53 @@ function submit() {
     let weight = document.getElementById("bb")
 
     // localStorage.setItem(namaa.value, height.value)
-
-
-
-    let user = {
-        tanggal: [tanggalFix],
-        tinggi: [height.value],
-        berat: [weight.value],
-        bmi: [hitungBmi(height.value, weight.value)]
-    }
-    let histori
-    // console.log(JSON.parse(localStorage.getItem('bmiHistori')));
-
-    if (!JSON.parse(localStorage.getItem('bmiHistori'))) {
-        histori = {}
-        if (histori[namaa.value]) {
-            histori[namaa.value].tanggal.push(tanggalFix)
-            histori[namaa.value].tinggi.push(height.value)
-            histori[namaa.value].berat.push(weight.value)
-            histori[namaa.value].bmi.push(hitungBmi(height.value, weight.value))
-        }
-        else {
-            histori[namaa.value] = user
-        }
+    if (!namaa.value || !height.value || !weight.value) {
+        alert('Masukkan semua data dengan benar')
     }
     else {
-        histori = JSON.parse(localStorage.getItem('bmiHistori'))
-        if (histori[namaa.value]) {
-            histori[namaa.value].tanggal.push(tanggalFix)
-            histori[namaa.value].tinggi.push(height.value)
-            histori[namaa.value].berat.push(weight.value)
-            histori[namaa.value].bmi.push(hitungBmi(height.value, weight.value))
+        let user = {
+            tanggal: [tanggalFix],
+            tinggi: [height.value],
+            berat: [weight.value],
+            bmi: [hitungBmi(height.value, weight.value)]
+        }
+        let histori
+        // console.log(JSON.parse(localStorage.getItem('bmiHistori')));
+
+        if (!JSON.parse(localStorage.getItem('bmiHistori'))) {
+            histori = {}
+            if (histori[namaa.value]) {
+                histori[namaa.value].tanggal.push(tanggalFix)
+                histori[namaa.value].tinggi.push(height.value)
+                histori[namaa.value].berat.push(weight.value)
+                histori[namaa.value].bmi.push(hitungBmi(height.value, weight.value))
+            }
+            else {
+                histori[namaa.value] = user
+            }
         }
         else {
-            histori[namaa.value] = user
+            histori = JSON.parse(localStorage.getItem('bmiHistori'))
+            if (histori[namaa.value]) {
+                histori[namaa.value].tanggal.push(tanggalFix)
+                histori[namaa.value].tinggi.push(height.value)
+                histori[namaa.value].berat.push(weight.value)
+                histori[namaa.value].bmi.push(hitungBmi(height.value, weight.value))
+            }
+            else {
+                histori[namaa.value] = user
+            }
         }
+
+        localStorage.setItem('bmiHistori', JSON.stringify(histori));
+        localStorage.setItem('user', namaa.value)
+
+        weight.value = ''
+        window.location = "result.html"
     }
 
-    localStorage.setItem('bmiHistori', JSON.stringify(histori));
-    localStorage.setItem('user', namaa.value)
 
-    weight.value = ''
-    window.location = "result.html"
+
 }
 
 if (document.body.id === "result") {
@@ -133,6 +141,7 @@ if (document.body.id === "result") {
             'Lemak sehat: Alpukat, kacang almond, minyak zaitun',
             'Camilan sehat: Smoothie buah dengan susu, granola, dark chocolate']])
         document.getElementById('ktgMakanan').innerText = "Makanan tinggi kalori dan protein sehat"
+        document.getElementById('kuning').innerText = `${bmi}, Kurus`
     }
     else if (bmi >= 18 && bmi <= 24.9) {
         ktg = 'Berat Ideal'
@@ -142,30 +151,34 @@ if (document.body.id === "result") {
             'Lemak sehat: Biji chia, biji bunga matahari, minyak kelapa',
             'Camilan sehat: Buah segar, yoghurt dengan madu, kacang-kacangan']])
         document.getElementById('ktgMakanan').innerText = "Makanan seimbang"
+        document.getElementById('hijau').innerText = `${bmi}, Berat Ideal`
     }
     else if (bmi >= 25 && bmi <= 29.9) {
         ktg = 'Berat Berlebih'
         document.getElementById('pesan').innerText = "Turunkan berat badan secara sehat!"
-        createlist([["Kurangi asupan kalori, terutama dari gula dan lemak jenuh", 'Tingkatkan aktivitas fisik (aerobik, jalan kaki, berenang)', 'Perbanyak serat untuk mengurangi rasa lapar', 'Hindari makan berlebihan dengan mengontrol porsi'],[ 'Karbohidrat sehat: Beras merah, oat, jagung rebus',
+        createlist([["Kurangi asupan kalori, terutama dari gula dan lemak jenuh", 'Tingkatkan aktivitas fisik (aerobik, jalan kaki, berenang)', 'Perbanyak serat untuk mengurangi rasa lapar', 'Hindari makan berlebihan dengan mengontrol porsi'], ['Karbohidrat sehat: Beras merah, oat, jagung rebus',
             'Protein: Ikan bakar, dada ayam tanpa kulit, kacang merah',
             'Lemak sehat: Minyak zaitun, alpukat, biji rami',
             'Camilan sehat: Salad sayur, popcorn tanpa mentega, buah potong']])
         document.getElementById('ktgMakanan').innerText = "Makanan rendah kalori dan tinggi serat"
+        document.getElementById('kuning').innerText = `${bmi}, Berat Berlebih`
     }
     else if (bmi >= 30) {
         ktg = "Obesitas"
         document.getElementById('pesan').innerText = "Turunkan berat badan dengan optimal!"
-        createlist([['Fokus pada makanan rendah kalori dan tinggi serat', 'Lakukan olahraga rutin yang disesuaikan dengan kondisi tubuh', 'Kurangi konsumsi makanan olahan dan junk food', 'Konsultasikan dengan ahli gizi atau dokter untuk rencana diet yang sesuai'], [ 'Karbohidrat sehat: Brokoli, bayam, wortel, kubis',
+        createlist([['Fokus pada makanan rendah kalori dan tinggi serat', 'Lakukan olahraga rutin yang disesuaikan dengan kondisi tubuh', 'Kurangi konsumsi makanan olahan dan junk food', 'Konsultasikan dengan ahli gizi atau dokter untuk rencana diet yang sesuai'], ['Karbohidrat sehat: Brokoli, bayam, wortel, kubis',
             'Protein: Tahu kukus, ikan panggang, putih telur, dada ayam rebus',
             'Lemak sehat: Kenari, biji labu, flaxseed',
             'Camilan sehat: Jus hijau tanpa gula, sup bening, kacang-kacangan panggang']])
         document.getElementById('ktgMakanan').innerText = "Makanan rendah kalori dan tinggi nutrisi"
+        document.getElementById('merah').innerText = `${bmi}, Obesitas`
     }
 
 
 
     // document.getElementById('hasil').innerText = `halo ${user} bmi kamu adalah ${bmi}`
     document.getElementById('hasilNama').innerHTML = `Halo ${user}! BMI kamu : <span class="value" id="hasilBMI">${bmi}</span>, <span class="status">${ktg}</span>`
+    document.getElementById("namaa").innerText = `${user}`
     // document.getElementById('hasilBMI').innerText = bmi 
 
     let tableFinal = []
@@ -179,13 +192,19 @@ if (document.body.id === "result") {
     createTable(tableFinal);
 
     function hapus() {
-        delete histori[user]
-        console.log(histori);
+        let text = "Yakin ingin menghapus?";
+        if (confirm(text) == true) {
+            delete histori[user]
+            console.log(histori);
 
-        localStorage.setItem('bmiHistori', JSON.stringify(histori));
-        // localStorage.histori = JSON.stringify(histori)
+            localStorage.setItem('bmiHistori', JSON.stringify(histori));
+            // localStorage.histori = JSON.stringify(histori)
 
-        document.getElementById('isiTabel').innerHTML = ""
-        document.getElementById('dataKosong').innerHTML = "Data Histori Kosong"
+            document.getElementById('isiTabel').innerHTML = "<td></td><td>Riwayat data perhitungan kosong</td><td></td>"
+            // document.getElementById('dataKosong').innerHTML = "Data Histori Kosong"
+        } else {
+            text = "You canceled!";
+        }
+
     }
 }

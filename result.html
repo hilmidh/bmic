@@ -15,30 +15,26 @@
             margin: 0;
             font-family: Arial, sans-serif;
             gap: 20px;
-        }
-
-        body {
-            display: flex;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             text-align: center;
             margin: 0;
             padding: 0;
-            background-image: url('background\ HCTN.jpg');
+            background-image: url('bg.png');
+            background-size: cover;
         }
+
 
         table {
             border-collapse: collapse;
             width: 80%;
             max-width: 800px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            /* margin-bottom: 20px; */
             background-color: white;
             /* margin-left: 20%; */
             /* margin-right: 10%; */
-            margin: 20px;
-            margin-right: 15%;
-            margin-left: 15%;
+            /* margin: 20px; */
+            /* margin-right: 15%; */
+            /* margin-left: 15%; */
         }
 
         th,
@@ -46,11 +42,13 @@
             padding: 15px;
             text-align: center;
             border: 1px solid #ddd;
+
         }
 
         th {
-            background-color: #4CAF50;
+            background-color: #80968f;
             color: white;
+
         }
 
         tr:nth-child(even) {
@@ -111,6 +109,21 @@
             color: #45a049;
             font-weight: bold;
         }
+        #kuning{
+            color: rgb(216, 209, 10);
+            font-weight: bold;
+        }
+
+        #hijau{
+            color: #45a049(192, 192, 6);
+            font-weight: bold;
+        }
+
+        #merah{
+            color:red;
+            font-weight: bold;
+        }
+
 
         .risk-warning {
             margin-top: 15px;
@@ -150,30 +163,64 @@
 
         button {
             padding: 8px 16px;
-            background-color: #4CAF50;
+            background-color: #80968f;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             margin-bottom: 5%;
             width: 20%;
+
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #51635d;
         }
+
+        .table-container {
+            overflow: hidden;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: white;
+        }
+
+        th,
+        td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #80968f;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
         
     </style>
 </head>
 
 <body id="result">
-    <header style="background-color: #28a745; color: white; padding: 20px; width: 100%;">
+    <header style="background-color: #80968f; color: white; padding: 20px; width: 100%;">
         <h1 style="margin: 0">Body Mass Index Calculator</h1>
     </header>
     <h1 id="hasil"></h1>
     <div class="bmi-result">
         <div class="bmi-status">
-            <h2 id="hasilNama">Halo Dono! BMI kamu : <span class="value" id="hasilBMI">39.5</span>, <span class="status">Obesitas</span></h2>
+            <h2 id="hasilNama" style="display: none;">Halo Dono! BMI kamu : <span class="value" id="hasilBMI">39.5</span>, <span
+                    class="status">Obesitas</span></h2>
+            <h2>Halo <span id="namaa"></span>! BMI kamu : <span id="kuning"></span><span id="hijau" style="color: #45a049;"></span><span id="merah"></span></h2>
         </div>
 
         <div class="risk-warning">
@@ -197,23 +244,24 @@
                 <h3>Rekomendasi Makanan</h3>
                 <h4 id="ktgMakanan">Makanan tinggi kalori dan protein sehat</h4>
                 <ul id="makanan" style="text-align: left;">
-                    
+
                 </ul>
             </div>
         </div>
     </div>
-
-
-    <table id="histr">
-        <thead>
-            <tr>
-                <th>Tanggal</th>
-                <th>Berat Badan(Kg)</th>
-                <th>BMI</th>
-            </tr>
-        </thead>
-        <tbody id="isiTabel"></tbody>
-    </table>
+        
+    <div class="table-container">
+        <table id="histr">
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Berat Badan(Kg)</th>
+                    <th>BMI</th>
+                </tr>
+            </thead>
+            <tbody id="isiTabel"></tbody>
+        </table>
+    </div>
 
 
     <!-- <h1 id="dataKosong"></h1> -->

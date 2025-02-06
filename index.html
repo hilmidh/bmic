@@ -1,96 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Body Mass Index Calculate</title>
-  </head>
-  <body
-    style="
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Body Mass Index Calculate</title>
+  <style>
+    button{
+      background-color: #80968f;
+    }
+    button:hover{
+      background-color: #51635d;
+    }
+  </style>
+</head>
+
+<body style="
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
       text-align: center;
       margin: 0;
       padding: 0;
-      background-image: url('background\ HCTN.jpg');
-    "
-  >
-    <header style="background-color: #28a745; color: white; padding: 20px">
+      background-image: url('bg.png');
+      background-size: cover;
+    ">
+  <div style="">
+    <header style="background-color: #80968f; color: white; padding: 20px">
       <h1 style="margin: 0">Body Mass Index Calculator</h1>
     </header>
 
-    <h2 style="margin-top: 20px; padding: 3px">Masukan Data</h2>
+    <h2 style="margin-top: 20px; padding: 3px">Masukkan Data</h2>
 
     <div style="display: flex; justify-content: center; margin-top: 20px">
-      <div
-        style="
+      <div style="
           background: white;
           padding: 20px;
           border-radius: 10px;
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
           width: 400px;
-        "
-      >
-        <input
-          type="text"
-          id="nama"
-          placeholder="Masukan Nama"
-          required
-          style="
+        ">
+        <input type="text" id="nama" placeholder="Masukan Nama" required style="
             width: 90%;
             padding: 10px;
             margin: 5px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
-          "
-        />
+          " />
 
-        <input
-          type="number"
-          id="tinggi"
-          placeholder="Masukan Tinggi Badan (cm)"
-          required
-          style="
+        <input type="number" id="tinggi" placeholder="Masukan Tinggi Badan (cm)" required style="
             width: 90%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
-          "
-        />
+          " />
 
-        <input
-          type="number"
-          id="bb"
-          placeholder="Masukan Berat Badan (kg)"
-          required
-          style="
+        <input type="number" id="bb" placeholder="Masukan Berat Badan (kg)" required style="
             width: 90%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
-          "
-        />
+          " />
 
-        <button
-          onclick="submit()"
-          type="button"
-          style="
+        <button onclick="submit()" type="button" style="
             width: 70%;
             padding: 10px;
-            background-color: #28a745;
+            
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 10px;
-          "
-        >
+          ">
           Submit
         </button>
       </div>
     </div>
-    <script src="script.js"></script>
-  </body>
+  </div>
+  <script src="script.js"></script>
+</body>
+
 </html>
