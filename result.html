@@ -71,6 +71,88 @@
 </head>
 <body id="result">
     <h1 id="hasil"></h1>
+    <div class="bmi-result">
+        <div class="bmi-status">
+            <h2>BMI kamu : <span class="value">39.5</span>, <span class="status">Obesitas</span></h2>
+        </div>
+        
+        <div class="risk-warning">
+            <p>Dalam 60% kasus, <span class="highlight">pola makan yang buruk</span> dapat <span class="highlight">berisiko</span> Diabetes</p>
+            
+            <div class="image-container">
+                <img src="healthy-food.png" alt="Healthy Food and Glucose Meter">
+            </div>
+            
+            <button class="consult-button">Konsultasi Ahli Gizi</button>
+        </div>
+    
+        <style>
+            .bmi-result {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                margin: 20px;
+            }
+    
+            .bmi-status h2 {
+                font-size: 20px;
+                color: #333;
+                font-weight: normal;
+            }
+    
+            .value {
+                color: #e91e63;
+                font-weight: bold;
+            }
+    
+            .status {
+                color: #e91e63;
+                font-weight: bold;
+            }
+    
+            .risk-warning {
+                margin-top: 15px;
+            }
+    
+            .risk-warning p {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+    
+            .highlight {
+                color: #e91e63;
+                font-weight: bold;
+            }
+    
+            .image-container {
+                float: right;
+                max-width: 200px;
+                margin-top: -60px;
+            }
+    
+            .image-container img {
+                width: 100%;
+                height: auto;
+            }
+    
+            .consult-button {
+                background-color: #e91e63;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 25px;
+                font-size: 16px;
+                cursor: pointer;
+                margin-top: 20px;
+                transition: background-color 0.3s ease;
+            }
+    
+            .consult-button:hover {
+                background-color: #d81557;
+            }
+        </style>
+    </div>
    <table id="histr">
         <thead>
             <tr>
